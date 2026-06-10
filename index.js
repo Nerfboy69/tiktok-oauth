@@ -11,12 +11,13 @@ app.get('/callback', async (req, res) => {
     const [guildId, creatorId] = state.split(':');
     try {
         const params = new URLSearchParams({
-            client_key: process.env.TIKTOK_CLIENT_KEY,
-            client_secret: process.env.TIKTOK_CLIENT_SECRET,
-            code,
-            grant_type: 'authorization_code',
-            redirect_uri: process.env.TIKTOK_REDIRECT_URI,
-        });
+    client_key: process.env.TIKTOK_CLIENT_KEY,
+    client_secret: process.env.TIKTOK_CLIENT_SECRET,
+    code,
+    grant_type: 'authorization_code',
+    redirect_uri: 'https://tiktok-oauth-production-0586.up.railway.app/callback',
+});
+
         const tokenRes = await fetch('https://open.tiktokapis.com/v2/oauth/token/', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
