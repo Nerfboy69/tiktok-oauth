@@ -39,5 +39,8 @@ app.get('/callback', async (req, res) => {
         res.send('Error: ' + err.message);
     }
 });
+app.get('/', (req, res) => res.send('<html><body><h1>Little Legs Bot</h1><p>Discord notification bot for content creators.</p></body></html>'));
+app.get('/tos', (req, res) => res.send('<html><body><h1>Terms of Service</h1><p>This service is for private use only.</p></body></html>'));
+app.get('/privacy', (req, res) => res.send('<html><body><h1>Privacy Policy</h1><p>We only store TikTok access tokens to provide video upload notifications.</p></body></html>'));
 
 app.listen(PORT, () => console.log('Listening on', PORT));
