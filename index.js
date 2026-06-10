@@ -24,8 +24,9 @@ app.get('/callback', async (req, res) => {
             body: params.toString()
         });
         const tokenData = await tokenRes.json();
-        if (!tokenData.data?.access_token) return res.send('Failed: ' + JSON.stringify(tokenData));
-        const { access_token, refresh_token, expires_in, open_id } = tokenData.data;
+       if (!tokenData.access_token) return res.send('Failed: ' + JSON.stringify(tokenData));
+const { access_token, refresh_token, expires_in, open_id } = tokenData;
+
         await mongoose.connection.collection('guildconfigs').updateOne(
             { guildId, 'contentCreators.id': creatorId },
             { $set: {
